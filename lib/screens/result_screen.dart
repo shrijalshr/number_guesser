@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 class ResultScreen extends StatelessWidget {
   final int secretNumber;
   final int guessedNumber;
+  final int attempt;
 
   const ResultScreen({
     Key? key,
     required this.secretNumber,
     required this.guessedNumber,
+    required this.attempt,
   }) : super(key: key);
 
   @override
@@ -16,7 +18,8 @@ class ResultScreen extends StatelessWidget {
     Color messageColor;
 
     if (guessedNumber == secretNumber) {
-      feedbackMessage = 'Correct! You guessed it!';
+      feedbackMessage =
+          'Correct! You guessed it in $attempt ${(attempt == 1) ? 'attempt' : 'attempts'}';
       messageColor = Colors.green;
     } else if (guessedNumber < secretNumber) {
       feedbackMessage = 'Too low! Try a higher number.';
@@ -70,7 +73,10 @@ class ResultScreen extends StatelessWidget {
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               style: ElevatedButton.styleFrom(
-                padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 16),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 40,
+                  vertical: 16,
+                ),
                 backgroundColor: Colors.blueAccent,
                 foregroundColor: Colors.white,
                 shape: RoundedRectangleBorder(

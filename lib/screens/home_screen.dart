@@ -83,6 +83,7 @@ class _HomeScreenState extends State<HomeScreen> {
         builder: (context) => ResultScreen(
           secretNumber: _secretNumber,
           guessedNumber: guessNumber,
+          attempt: _attempts,
         ),
       ),
     ).then((_) {
@@ -104,7 +105,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       // We use a Container to add a soft background color
       body: Container(
-        color: Colors.blue.shade50,
+        color: const Color.fromARGB(255, 151, 183, 206),
         padding: const EdgeInsets.all(24.0), // Spacing around the edges
         child: Center(
           child: Column(
